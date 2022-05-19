@@ -12,11 +12,18 @@ toDigitsHelper n d
   | d < 10 = [n]
   | otherwise      = (n `div` d) : toDigitsHelper (n `mod` d) (d `div` 10)
 
+toDigitsWithAcc :: Integer -> [Integer] -> [Integer]
+toDigitsWithAcc n acc
+  | n <= 0 = acc
+  | n < 10 = n : acc
+  | otherwise  = toDigitsWithAcc (n `div` 10)  ((n `mod` 10): acc)
+
 toDigits :: Integer -> [Integer]
 toDigits n
   | n <= 0 = []
   | n < 10 = [n]
-  | otherwise  = toDigitsHelper n (biggestPow10Divisor n)
+-- | otherwise  = toDigitsHelper n (biggestPow10Divisor n)
+  | otherwise  = toDigitsWithAcc n []
 
 -- #1b
 toDigitsRev :: Integer -> [Integer]
