@@ -24,6 +24,8 @@ spec = do
 
   describe "localMaxima" $ do
     it "returns all the local maxima in the input list, in order" $ do
+      localMaxima [] `shouldBe` []
+      localMaxima [1] `shouldBe` []
       localMaxima [1, 2] `shouldBe` []
       localMaxima [1, 2, 3] `shouldBe` []
       localMaxima [2, 9, 5, 6, 1] `shouldBe` [9, 6]

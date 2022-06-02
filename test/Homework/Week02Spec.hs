@@ -6,6 +6,8 @@ module Homework.Week02Spec (
 import Test.Hspec
 
 import Homework.Week02.Assignment
+import Homework.Week02.Log
+
 
 main :: IO ()
 main = hspec spec
@@ -78,3 +80,9 @@ spec = do
       let messages = [LogMessage (Error 49) 10 "alpha", LogMessage (Error 51) 11 "beta", LogMessage (Error 100) 9 "kappa", Unknown "foo", LogMessage Warning 100 "blar"]
 
       whatWentWrong messages `shouldBe` ["kappa", "beta"]
+
+
+  -- describe "whatWentWrongFile" $ do
+  --   it "thing thing" $ do
+      
+  --     testWhatWentWrong "error.log" `shouldBe` ["kappa", "beta"]

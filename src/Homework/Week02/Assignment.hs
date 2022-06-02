@@ -64,3 +64,6 @@ getContent (LogMessage _ _ content) = content
 
 whatWentWrong :: [LogMessage] -> [String]
 whatWentWrong messages = map getContent (inOrder (build (filter isSevere messages)))
+
+readTheLogAndReport :: FilePath -> IO [String]
+readTheLogAndReport = fmap (whatWentWrong . parse) . readFile
